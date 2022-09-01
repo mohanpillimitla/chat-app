@@ -8,7 +8,7 @@ class IsChatParticipant(permissions.BasePermission):
 
     def has_permission(self, request, view):
         try:
-            UserChatThread.object.get(id=view.kwargs.pk, participant__in= [request.user])
+            UserChatThread.objects.get(id=view.kwargs['pk'], participant__in= [request.user.id])
             return True
-        except:
-            return True
+        except Exception as e:
+            return False

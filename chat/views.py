@@ -14,7 +14,7 @@ from .permissions import IsChatParticipant
 class ChatThreadViewSet(ModelViewSet):
     serializer_class = UserChatThreadSerializer
     permission_classes = (IsAuthenticated,)
-    queryset = UserChatThread.objects.none()
+    queryset = UserChatThread.objects.all()
 
     def get_queryset(self):
         if self.action=="list":
